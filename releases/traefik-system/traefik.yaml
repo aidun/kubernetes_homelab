@@ -19,3 +19,4 @@ spec:
       enabled: true
     dashboard:
       enabled: true
+      domain: ingress-dashboard.lab.markushartmann.dev
