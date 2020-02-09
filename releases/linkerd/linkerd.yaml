@@ -12,8 +12,8 @@ spec:
   forceUpgrade: false
   chart:
     repository: https://helm.linkerd.io/stable
-    name: linkerd
-    version: stable-2.7.0
+    name: linkerd2
+    version: 2.7.0
   values:
     global:
       noInitContainer: true
