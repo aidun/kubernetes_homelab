@@ -18,3 +18,6 @@ spec:
     controller:
       service:
         type: LoadBalancer
+      image:
+        repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller-arm
+        tag: 0.28.0
