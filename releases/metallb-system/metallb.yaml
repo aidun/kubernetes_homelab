@@ -5,7 +5,7 @@ metadata:
   namespace: metallb-system
 spec:
   releaseName: metallb
-  targetNamespace: metallb
+  targetNamespace: metallb-system
   timeout: 300
   resetValues: false
   wait: false
