@@ -1,0 +1,19 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: linkerd
+  namespace: linkerd
+spec:
+  releaseName: linkerd
+  targetNamespace: linkerd
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://helm.linkerd.io/stable
+    name: linkerd
+  values:
+    global:
+      noInitContainer: true
+    installNamespace: false
