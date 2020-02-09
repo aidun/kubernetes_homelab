@@ -13,6 +13,7 @@ spec:
   chart:
     repository: https://helm.linkerd.io/stable
     name: linkerd
+    version: latest
   values:
     global:
       noInitContainer: true
