@@ -15,4 +15,6 @@ spec:
     name: nginx-ingress
     version: 1.30.0
   values:
- 
+    controller:
+      service:
+        type: LoadBalancer
