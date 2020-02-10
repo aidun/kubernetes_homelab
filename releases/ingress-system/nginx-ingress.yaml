@@ -21,3 +21,6 @@ spec:
       image:
         repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller-arm
         tag: 0.28.0
+    defaultBackend:
+      image:
+        repository: k8s.gcr.io/defaultbackend-arm
