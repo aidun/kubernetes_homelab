@@ -18,8 +18,7 @@ spec:
     controller:
       service:
         type: LoadBalancer
-        annotations:
-        - dev.inlets.manage=true
+        annotations: dev.inlets.manage=true
       image:
         repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller-arm
         tag: 0.28.0
