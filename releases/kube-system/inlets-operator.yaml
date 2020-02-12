@@ -1,0 +1,21 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: kube-system
+spec:
+  releaseName: inlets-operator
+  targetNamespace: kube-system
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://inlets.github.io/inlets-operator/
+    name: inlets-operator
+    version: 0.6.3
+  values:
+    provider: gce
+    zone: us-central1-a
+    gceProjectId: markush1986-inlets
+    annotatedOnly: true

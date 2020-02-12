@@ -1,0 +1,24 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: flux-operator
+  namespace: kube-system
+spec:
+  releaseName: flux
+  targetNamespace: kube-system
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://charts.fluxcd.io
+    name: flux
+    version: 1.2.0
+  values:
+    image:
+      repository: docker.io/onedr0p/flux
+    git:
+      user: aidun
+      email: aidun@users.noreply.github.com
+      url: git@github.com:aidun/kubernetes_homelab
+      path: namespaces,workloads,releases

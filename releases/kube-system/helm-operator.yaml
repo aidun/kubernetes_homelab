@@ -1,0 +1,24 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: helm-operator
+  namespace: kube-system
+spec:
+  releaseName: helm-operator
+  targetNamespace: kube-system
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://charts.fluxcd.io
+    name: helm-operator
+    version: 0.6.0
+  values:
+    image:
+      repository: docker.io/onedr0p/helm-operator
+    git:
+      ssh:
+        secretName: flux-git-deploy
+    helm:
+      version: v3
