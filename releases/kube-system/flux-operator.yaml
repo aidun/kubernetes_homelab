@@ -17,6 +17,7 @@ spec:
   values:
     image:
       repository: docker.io/onedr0p/flux
+      tag: latest
     git:
       user: aidun
       email: aidun@users.noreply.github.com

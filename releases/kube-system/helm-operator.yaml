@@ -17,6 +17,7 @@ spec:
   values:
     image:
       repository: docker.io/onedr0p/helm-operator
+      tag: latest
     git:
       ssh:
         secretName: flux-git-deploy
