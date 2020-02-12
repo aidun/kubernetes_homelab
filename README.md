@@ -32,7 +32,7 @@ The helm-operator and flux are installed first time by hand. After the bootstrap
 ```
 helm upgrade -i helm-operator fluxcd/helm-operator --namespace kube-system --set git.ssh.secretName=flux-git-deploy --set helm.versions=v3 --set image.repository=docker.io/onedr0p/helm-operator --set image.tag=latest
 
-helm upgrade -i flux fluxcd/flux --wait --namespace kube-system --set image.repository=docker.io/onedr0p/flux --set git.user=aidun --set git.email=aidun@users.noreply.github.com --set git.url=git@github.com:aidun/kubernetes_homelab --set git.path="namespaces\,workloads\,releases" --set image.tag=latest
+helm upgrade -i flux fluxcd/flux --wait --namespace kube-system --set image.repository=docker.io/onedr0p/flux --set git.user=aidun --set git.email=aidun@users.noreply.github.com --set git.url=git@github.com:aidun/kubernetes_homelab --set git.path='namespaces\,workloads\,releases' --set image.tag=latest
 ```
 The last step is to get the public key of flux and add it to the github deploy keys.
 ```
