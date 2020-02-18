@@ -23,3 +23,5 @@ spec:
       email: aidun@users.noreply.github.com
       url: git@github.com:aidun/kubernetes_homelab
       path: namespaces,workloads,releases
+    registry:
+      disableScanning: true
