@@ -1,8 +1,16 @@
 # Homelab Bootstrap
+
+The intention of the repo is to create a
+
 ## Requirements
 
-* Raspberry Pi4 with Raspbian installed
-* SSH-Keyexchange for user PI
+* Raspberry Pi4 with Ubuntu 18.04 (19.10 has some strange ipv6 issues ) installed and the following additional software packages installed:
+  * iscsi 
+    * sudo apt-get update
+    * sudo apt-get install open-iscsi
+    * sudo service open-iscsi restart
+* cgroups enabled / cgroupsmemory enabled (https://askubuntu.com/questions/1189480/raspberry-pi-4-ubuntu-19-10-cannot-enable-cgroup-memory-at-boostrap)
+* SSH-Keyexchange for a user, who can sudo su
 * GCE service account token as described in @alexellis [great tutorial](https://github.com/inlets/inlets-operator/blob/master/README.md])
 * Installed tools:
   * [helm3](https://github.com/helm/helm)
@@ -12,7 +20,7 @@
 
 ## Install k3s
 ```
-k3sup install --ip <IP OF THE PI> --user pi --k3s-extra-args "--no-deploy=traefik,svclb"
+k3sup install --ip <IP OF THE PI> --user <USER> --k3s-extra-args "--no-deploy=traefik,svclb"
 export KUBECONFIG=/PATH/TO/KUBECONFIG
 ```
 
@@ -23,6 +31,14 @@ I removed traefik an the svclb in favor for nginx. I had some trouble with traef
 All system tools should be installed in the *kube-system* namespace.
 ```
 kubens kube-system
+```
+Openebs should be installed at first, to get distributed storage for all other tools:
+```
+#TODO: not working on arm
+#helm repo update
+#helm upgrade -i openebs --namespace kube-system stable/openebs --version 1.7.0 --set defaultStorageConfig.enabled=true
+kubectl apply -f https://raw.githubusercontent.com/openebs/charts/master/docs/openebs-operator-arm-dev.yaml
+k annotate sc openebs-snapshot-promoter storageclass.kubernetes.io/is-default-class=true
 ```
 The GCE token is not managed bei flux, so I had to add it manually.
 ```
