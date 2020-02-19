@@ -1,0 +1,28 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: kube-system
+spec:
+  releaseName: loki
+  targetNamespace: kube-system
+  timeout: 300
+  resetValues: false
+  wait: false
+  forceUpgrade: false
+  chart:
+    repository: https://grafana.github.io/loki/charts
+    name: loki-stack
+    version: 0.32.0
+  values:
+    grafana:
+      enabled: true
+      service:
+        type: LoadBalancer
+      ingress:
+        enabled: true
+      sidecar:
+        datasources:
+          enabled: false
+        dasboards:
+          enabled: false
