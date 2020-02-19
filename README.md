@@ -1,6 +1,23 @@
 # Homelab Bootstrap
 
-The intention of the repo is to create a
+The intention of the repo is to create a full featured homelab / mini cluster which can run on arm and amd64 machines.
+
+Current Status
+
+- [x] Gitops: Fluxcd
+- [x] Gitops: Helm-Operator
+- [x] Storage: Openebs
+- [x] Ingress-Remote: Inlets
+- [x] Ingress-Local: Metallb
+- [x] Ingress: Nginx
+- [ ] Ingress: TLS
+- [X] Monitoring - Logs: Loki
+- [ ] Monitoring - Logs: Grafana
+  - [x] Grafana
+  - [ ] auto provisioning of datasource and dashboard
+- [ ] Monitoring - Merics: Prometheus
+- [ ] Secret-Management - Sealed Secrets
+- [ ] External-DNS - external-dns
 
 ## Requirements
 
@@ -34,7 +51,7 @@ kubens kube-system
 ```
 Openebs should be installed at first, to get distributed storage for all other tools:
 ```
-#TODO: not working on arm
+#TODO: not working arm helm chart
 #helm repo update
 #helm upgrade -i openebs --namespace kube-system stable/openebs --version 1.7.0 --set defaultStorageConfig.enabled=true
 kubectl apply -f https://raw.githubusercontent.com/openebs/charts/master/docs/openebs-operator-arm-dev.yaml
@@ -59,9 +76,3 @@ To follow the progress watch the logs of flux.
 ```
 kubectl logs deployment.apps/flux
 ```
-# Parts that dont work
-* sealed secrets
-* external-dns
-* traefik
-
-*I will describe later why...*
